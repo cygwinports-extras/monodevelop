@@ -1,0 +1,62 @@
+--- origsrc/monodevelop-2.2/src/addins/VersionControl/MonoDevelop.VersionControl.Subversion/MonoDevelop.VersionControl.Subversion/LibSvnClient.cs	2009-11-05 12:12:14.000000000 -0600
++++ src/monodevelop-2.2/src/addins/VersionControl/MonoDevelop.VersionControl.Subversion/MonoDevelop.VersionControl.Subversion/LibSvnClient.cs	2010-01-26 22:25:19.673842700 -0600
+@@ -580,6 +580,7 @@ namespace MonoDevelop.VersionControl.Sub
+ 	
+ 	public class LibSvnClient0 : LibSvnClient {
+ 		private const string svnclientlib = "libsvn_client-1.so.0";
++		private const string svnsubrlib = "libsvn_subr-1.so.0";
+ 		
+ 		public override void config_ensure (string config_dir, IntPtr pool)
+ 		{
+@@ -829,11 +830,11 @@ namespace MonoDevelop.VersionControl.Sub
+ 		}
+ 
+ 		
+-		[DllImport(svnclientlib)] static extern void svn_config_ensure (string config_dir, IntPtr pool);
+-		[DllImport(svnclientlib)] static extern void svn_config_get_config (ref IntPtr cfg_hash, string config_dir, IntPtr pool);
+-		[DllImport(svnclientlib)] static extern void svn_auth_open (out IntPtr auth_baton, IntPtr providers, IntPtr pool);
+-		[DllImport(svnclientlib)] static extern void svn_auth_set_parameter (IntPtr auth_baton, string name, IntPtr value);
+-		[DllImport(svnclientlib)] static extern IntPtr svn_auth_get_parameter (IntPtr auth_baton, string name);
++		[DllImport(svnsubrlib)] static extern void svn_config_ensure (string config_dir, IntPtr pool);
++		[DllImport(svnsubrlib)] static extern void svn_config_get_config (ref IntPtr cfg_hash, string config_dir, IntPtr pool);
++		[DllImport(svnsubrlib)] static extern void svn_auth_open (out IntPtr auth_baton, IntPtr providers, IntPtr pool);
++		[DllImport(svnsubrlib)] static extern void svn_auth_set_parameter (IntPtr auth_baton, string name, IntPtr value);
++		[DllImport(svnsubrlib)] static extern IntPtr svn_auth_get_parameter (IntPtr auth_baton, string name);
+ 		[DllImport(svnclientlib)] static extern void svn_client_get_simple_provider (IntPtr item, IntPtr pool);
+ 		[DllImport(svnclientlib)] static extern void svn_client_get_simple_prompt_provider (IntPtr item, svn_auth_simple_prompt_func_t prompt_func, IntPtr prompt_batton, [MarshalAs (UnmanagedType.SysInt)] int retry_limit, IntPtr pool);
+ 		[DllImport(svnclientlib)] static extern void svn_client_get_username_provider (IntPtr item, IntPtr pool);
+@@ -866,7 +867,7 @@ namespace MonoDevelop.VersionControl.Sub
+ 		                                                               IntPtr receiver_baton,
+ 		                                                               IntPtr ctx, IntPtr pool);
+ 		
+-		[DllImport(svnclientlib)] static extern IntPtr svn_time_from_cstring (out long aprtime, string time, IntPtr pool);
++		[DllImport(svnsubrlib)] static extern IntPtr svn_time_from_cstring (out long aprtime, string time, IntPtr pool);
+ 		
+ 		[DllImport(svnclientlib)] static extern IntPtr svn_client_url_from_path (ref IntPtr url, string path_or_url, IntPtr pool);
+ 		
+@@ -875,11 +876,11 @@ namespace MonoDevelop.VersionControl.Sub
+ 		                                                                ref Rev revision,
+ 		                                                                IntPtr ctx, IntPtr pool);
+ 		
+-		[DllImport(svnclientlib)] static extern IntPtr svn_stream_create (IntPtr baton, IntPtr pool);
++		[DllImport(svnsubrlib)] static extern IntPtr svn_stream_create (IntPtr baton, IntPtr pool);
+ 		
+ 		//[DllImport(svnclientlib)] static extern IntPtr svn_stream_set_read (IntPtr stream, svn_readwrite_fn_t reader);
+ 		
+-		[DllImport(svnclientlib)] static extern IntPtr svn_stream_set_write (IntPtr stream, svn_readwrite_fn_t writer);
++		[DllImport(svnsubrlib)] static extern IntPtr svn_stream_set_write (IntPtr stream, svn_readwrite_fn_t writer);
+ 		
+ 		[DllImport(svnclientlib)] static extern IntPtr svn_client_update (IntPtr result_rev, string path, ref Rev revision,
+ 		                                                                  int recurse, IntPtr ctx, IntPtr pool);
+--- origsrc/monodevelop-2.2/src/addins/VersionControl/MonoDevelop.VersionControl.Subversion/MonoDevelop.VersionControl.Subversion.dll.config	2009-11-05 12:12:14.000000000 -0600
++++ src/monodevelop-2.2/src/addins/VersionControl/MonoDevelop.VersionControl.Subversion/MonoDevelop.VersionControl.Subversion.dll.config	2010-01-26 22:26:36.313226200 -0600
+@@ -3,4 +3,7 @@
+ 	<dllmap os="osx" dll="libsvn_client-1.so.0" target="libsvn_client-1.dylib" />
+ 	<dllmap os="osx" dll="libapr-0.so.0" target="libapr-1.0.dylib" />
+ 	<dllmap os="freebsd" dll="libapr-0.so.0" target="libapr-1.so" />
+-</configuration>
+\ No newline at end of file
++	<dllmap os="cygwin" dll="libsvn_client-1.so.0" target="cygsvn_client-1-0.dll" />
++	<dllmap os="cygwin" dll="libsvn_subr-1.so.0" target="cygsvn_subr-1-0.dll" />
++	<dllmap os="cygwin" dll="libapr-0.so.0" target="cygapr-1-0.dll" />
++</configuration>

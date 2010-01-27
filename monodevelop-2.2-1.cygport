@@ -1,0 +1,14 @@
+inherit mono
+
+DESCRIPTION="Mono IDE"
+HOMEPAGE="http://monodevelop.com/"
+
+PATCH_URI="
+	2.2-dllmap-cygwin.patch
+	2.2-subversion.patch
+"
+
+DISTCLEANFILES="po/Makefile"
+
+CYGCONF_ARGS="--enable-gnomeplatform --disable-update-mimedb --disable-update-desktopdb"
+MAKEOPTS+=" -j1"
