@@ -11,24 +11,24 @@ Runtime requirements:
   libapr1-1.3.8-2
   mono-2.4.3.1-1
   mono-gconf-sharp2.0-2.24.1-1
-  mono-glade-sharp2.0-2.12.9-1
-  mono-glib-sharp2.0-2.12.9-1
+  mono-glade-sharp2.0-2.12.10-1
+  mono-glib-sharp2.0-2.12.10-1
   mono-gnome-sharp2.24-2.24.1-1
   mono-gnome-vfs-sharp2.0-2.24.1-1
-  mono-gtk-sharp2.0-2.12.9-1
+  mono-gtk-sharp2.0-2.12.10-1
   mono-Mono-Addins0.2-0.4-1
-  mono-pango-sharp2.0-2.12.9-1
-  subversion-1.6.6-3
+  mono-pango-sharp2.0-2.12.10-1
+  subversion-1.6.9-2
 
 Build requirements:
 (besides corresponding -devel packages)
   autoconf2.5-2.65-1
   automake1.10-1.10.3-1
-  cygport-0.9.80-1
+  cygport-0.9.84-1
   gawk-3.1.7-1
   make-3.81-2
   pkg-config-0.23b-10
-  sed-4.1.5-2
+  sed-4.2.1-1
 
 Canonical website:
   http://monodevelop.com/
@@ -39,19 +39,22 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack monodevelop-2.2-X-src.tar.bz2
+  unpack monodevelop-2.2.2-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./monodevelop-2.2-X.cygport all
+  cygport ./monodevelop-2.2.2-X.cygport all
 
 This will create:
-  /usr/src/monodevelop-2.2-X-src.tar.bz2
-  /usr/src/monodevelop-2.2-X.tar.bz2
+  /usr/src/monodevelop-2.2.2-X-src.tar.bz2
+  /usr/src/monodevelop-2.2.2-X.tar.bz2
 
 -------------------------------------------
 
 Port Notes:
+
+----- version 2.2.2-1 -----
+Version bump.
 
 ----- version 2.2-1 -----
 Initial release for Cygwin 1.7.
