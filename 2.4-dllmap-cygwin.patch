@@ -1,6 +1,6 @@
---- origsrc/monodevelop-2.2/configure.in	2009-12-11 14:52:28.000000000 -0600
-+++ src/monodevelop-2.2/configure.in	2010-01-26 21:31:56.304620400 -0600
-@@ -25,7 +25,6 @@ default_macplatform=no
+--- origsrc/monodevelop-2.4/configure.in	2010-06-14 14:48:32.000000000 -0500
++++ src/monodevelop-2.4/configure.in	2010-06-28 23:06:47.526712600 -0500
+@@ -28,7 +28,6 @@ default_macplatform=no
  
  case `uname` in
      Darwin) default_macplatform=yes ;;
@@ -8,8 +8,8 @@
      *) default_gnomeplatform=yes ;;
  esac
  
---- origsrc/monodevelop-2.2/src/addins/GnomePlatform/GnomePlatform.dll.config	2009-11-05 12:12:15.000000000 -0600
-+++ src/monodevelop-2.2/src/addins/GnomePlatform/GnomePlatform.dll.config	2010-01-26 21:28:06.977503700 -0600
+--- origsrc/monodevelop-2.4/src/addins/GnomePlatform/GnomePlatform.dll.config	2010-06-14 14:48:26.000000000 -0500
++++ src/monodevelop-2.4/src/addins/GnomePlatform/GnomePlatform.dll.config	2010-06-28 23:06:16.690948900 -0500
 @@ -1,8 +1,11 @@
  <configuration>
    <dllmap dll="libgio-2.0-0.dll" target="libgio-2.0.so.0" os="!osx,windows" />
@@ -22,8 +22,8 @@
    <dllmap dll="libgobject-2.0-0.dll" target="libgobject-2.0.dylib" os="osx" />
 +  <dllmap dll="libgobject-2.0-0.dll" target="cyggobject-2.0-0.dll" os="cygwin" />
  </configuration>
---- origsrc/monodevelop-2.2/src/addins/MonoDevelop.GtkCore/libstetic/libstetic.dll.config	2009-11-05 12:12:14.000000000 -0600
-+++ src/monodevelop-2.2/src/addins/MonoDevelop.GtkCore/libstetic/libstetic.dll.config	2010-01-26 21:29:03.890758900 -0600
+--- origsrc/monodevelop-2.4/src/addins/MonoDevelop.GtkCore/libstetic/libstetic.dll.config	2010-06-14 14:48:24.000000000 -0500
++++ src/monodevelop-2.4/src/addins/MonoDevelop.GtkCore/libstetic/libstetic.dll.config	2010-06-28 23:06:49.678835700 -0500
 @@ -1,8 +1,11 @@
  <configuration>
    <dllmap dll="libgobject-2.0-0.dll" target="libgobject-2.0.so.0" os="!osx,windows" />
@@ -36,8 +36,8 @@
    <dllmap dll="libgdk-win32-2.0-0.dll" target="libgdk-quartz-2.0.dylib" os="osx"/>
 +  <dllmap dll="libgdk-win32-2.0-0.dll" target="cyggdk-x11-2.0-0.dll" os="cygwin" />
  </configuration>
---- origsrc/monodevelop-2.2/src/addins/MonoDevelop.GtkCore/libsteticui/libsteticui.dll.config	2009-11-05 12:12:13.000000000 -0600
-+++ src/monodevelop-2.2/src/addins/MonoDevelop.GtkCore/libsteticui/libsteticui.dll.config	2010-01-26 21:29:35.259553100 -0600
+--- origsrc/monodevelop-2.4/src/addins/MonoDevelop.GtkCore/libsteticui/libsteticui.dll.config	2010-06-14 14:48:24.000000000 -0500
++++ src/monodevelop-2.4/src/addins/MonoDevelop.GtkCore/libsteticui/libsteticui.dll.config	2010-06-28 23:06:49.684836000 -0500
 @@ -1,8 +1,11 @@
  <configuration>
    <dllmap dll="libgobject-2.0-0.dll" target="libgobject-2.0.so.0" os="!osx,windows" />
@@ -50,8 +50,25 @@
    <dllmap dll="libgdk-win32-2.0-0.dll" target="libgdk-quartz-2.0.dylib" os="osx"/>
 +  <dllmap dll="libgdk-win32-2.0-0.dll" target="cyggdk-x11-2.0-0.dll" os="cygwin" />
  </configuration>
---- origsrc/monodevelop-2.2/src/core/MonoDevelop.Projects/MonoDevelop.Projects.dll.config	2009-11-05 12:12:16.000000000 -0600
-+++ src/monodevelop-2.2/src/core/MonoDevelop.Projects/MonoDevelop.Projects.dll.config	2010-01-26 21:31:03.366592600 -0600
+--- origsrc/monodevelop-2.4/src/core/Mono.Texteditor/Mono.TextEditor.dll.config	2010-06-14 14:48:26.000000000 -0500
++++ src/monodevelop-2.4/src/core/Mono.Texteditor/Mono.TextEditor.dll.config	2010-06-28 23:07:59.382822500 -0500
+@@ -15,4 +15,12 @@
+ 	<dllmap os="osx" dll="libgdk-win32-2.0-0.dll" target="libgdk-quartz-2.0.0.dylib"/>
+ 	<dllmap os="osx" dll="libpango-1.0-0.dll" target="libpango-1.0.0.dylib"/>
+ 	<dllmap os="osx" dll="libpangocairo-1.0-0.dll" target="libpangocairo-1.0.0.dylib"/>
+-</configuration>
+\ No newline at end of file
++
++	<dllmap os="osx" dll="libglib-2.0-0.dll" target="cygglib-2.0-0.dll"/>
++	<dllmap os="osx" dll="libgobject-2.0-0.dll" target="cyggobject-2.0-0.dll"/>
++	<dllmap os="osx" dll="libatk-1.0-0.dll" target="cygatk-1.0-0.dll"/>
++	<dllmap os="osx" dll="libgtk-win32-2.0-0.dll" target="cyggtk-x11-2.0-0.dll"/>
++	<dllmap os="osx" dll="libgdk-win32-2.0-0.dll" target="cyggdk-x11-2.0-0.dll"/>
++	<dllmap os="osx" dll="libpango-1.0-0.dll" target="cygpango-1.0-0.dll"/>
++	<dllmap os="osx" dll="libpangocairo-1.0-0.dll" target="cygpangocairo-1.0-0.dll"/>
++</configuration>
+--- origsrc/monodevelop-2.4/src/core/MonoDevelop.Core/MonoDevelop.Core.dll.config	2010-06-14 14:48:27.000000000 -0500
++++ src/monodevelop-2.4/src/core/MonoDevelop.Core/MonoDevelop.Core.dll.config	2010-06-28 23:08:20.943055700 -0500
 @@ -1,4 +1,5 @@
  <configuration>
    <dllmap dll="libglib-2.0-0.dll" target="libglib-2.0.so.0" os="!osx,windows" />
