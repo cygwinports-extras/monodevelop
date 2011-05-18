@@ -1,0 +1,11 @@
+--- origsrc/monodevelop-2.4.2/src/core/MonoDevelop.Startup/Makefile.am	2011-01-14 12:27:57.000000000 -0600
++++ src/monodevelop-2.4.2/src/core/MonoDevelop.Startup/Makefile.am	2011-05-17 18:31:10.578292300 -0500
+@@ -15,7 +15,7 @@ DEPS =  \
+ 
+ REFS = $(MONO_ADDINS_LIBS)
+ 
+-ICON = $(top_builddir)/theme-icons/Windows/monodevelop.ico
++ICON = $(top_srcdir)/theme-icons/Windows/monodevelop.ico
+ 
+ $(ASSEMBLY): $(build_sources) $(build_resources) $(DEPS)
+ 	$(CSC) $(CSC_FLAGS) -win32icon:$(ICON) -out:$@ $(REFS) $(build_deps) $(build_resources:%=/resource:%) $(build_sources)
