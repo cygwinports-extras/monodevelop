@@ -9,3 +9,31 @@
  
  $(ASSEMBLY): $(build_sources) $(build_resources) $(DEPS)
  	$(CSC) $(CSC_FLAGS) -win32icon:$(ICON) -out:$@ $(REFS) $(build_deps) $(build_resources:%=/resource:%) $(build_sources)
+--- origsrc/monodevelop-2.8.4.2/src/addins/VersionControl/MonoDevelop.VersionControl.Git/Makefile.am	2011-12-06 13:35:11.000000000 -0600
++++ src/monodevelop-2.8.4.2/src/addins/VersionControl/MonoDevelop.VersionControl.Git/Makefile.am	2011-12-13 00:06:37.373637000 -0600
+@@ -7,9 +7,9 @@ DEPS =  \
+ 	$(top_builddir)/build/bin/Mono.TextEditor.dll \
+ 	$(top_builddir)/build/bin/MonoDevelop.Core.dll \
+ 	$(top_builddir)/build/bin/MonoDevelop.Ide.dll \
+-	$(top_builddir)/contrib/bin/NGit.dll \
+-	$(top_builddir)/contrib/bin/NSch.dll \
+-	$(top_builddir)/contrib/bin/Sharpen.dll
++	$(top_srcdir)/contrib/bin/NGit.dll \
++	$(top_srcdir)/contrib/bin/NSch.dll \
++	$(top_srcdir)/contrib/bin/Sharpen.dll
+ 
+ REFS =  \
+ 	$(GLIB_SHARP_LIBS) \
+@@ -69,9 +69,9 @@ RES =  \
+ 
+ $(ASSEMBLY): $(build_sources) $(build_resources) $(DEPS)
+ 	mkdir -p $(ADDIN_BUILD)
+-	cp $(top_builddir)/contrib/bin/NGit.dll $(ADDIN_BUILD)
+-	cp $(top_builddir)/contrib/bin/NSch.dll $(ADDIN_BUILD)
+-	cp $(top_builddir)/contrib/bin/Sharpen.dll $(ADDIN_BUILD)
++	cp $(top_srcdir)/contrib/bin/NGit.dll $(ADDIN_BUILD)
++	cp $(top_srcdir)/contrib/bin/NSch.dll $(ADDIN_BUILD)
++	cp $(top_srcdir)/contrib/bin/Sharpen.dll $(ADDIN_BUILD)
+ 	$(CSC) $(CSC_FLAGS) $(build_sources) $(REFS) $(build_deps) $(build_resources:%=/resource:%) -out:$@ -target:library
+ 
+ $(ASSEMBLY).mdb: $(ASSEMBLY)

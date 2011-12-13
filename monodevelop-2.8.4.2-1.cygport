@@ -10,6 +10,7 @@ PATCH_URI="
 "
 
 DISTCLEANFILES="po/Makefile"
+DIFF_EXCLUDES="obj *.mdb"
 
 CYGCONF_ARGS="--enable-gnomeplatform --disable-update-mimedb --disable-update-desktopdb"
 MAKEOPTS+=" -j1"

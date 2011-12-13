@@ -1,5 +1,5 @@
---- origsrc/monodevelop-2.2/src/addins/VersionControl/MonoDevelop.VersionControl.Subversion/MonoDevelop.VersionControl.Subversion/LibSvnClient.cs	2009-11-05 12:12:14.000000000 -0600
-+++ src/monodevelop-2.2/src/addins/VersionControl/MonoDevelop.VersionControl.Subversion/MonoDevelop.VersionControl.Subversion/LibSvnClient.cs	2010-01-26 22:25:19.673842700 -0600
+--- a/src/addins/VersionControl/MonoDevelop.VersionControl.Subversion.Unix/MonoDevelop.VersionControl.Subversion.Unix/LibSvnClient.cs
++++ b/src/addins/VersionControl/MonoDevelop.VersionControl.Subversion.Unix/MonoDevelop.VersionControl.Subversion.Unix/LibSvnClient.cs
 @@ -580,6 +580,7 @@ namespace MonoDevelop.VersionControl.Sub
  	
  	public class LibSvnClient0 : LibSvnClient {
@@ -48,8 +48,8 @@
  		
  		[DllImport(svnclientlib)] static extern IntPtr svn_client_update (IntPtr result_rev, string path, ref Rev revision,
  		                                                                  int recurse, IntPtr ctx, IntPtr pool);
---- origsrc/monodevelop-2.2/src/addins/VersionControl/MonoDevelop.VersionControl.Subversion/MonoDevelop.VersionControl.Subversion.dll.config	2009-11-05 12:12:14.000000000 -0600
-+++ src/monodevelop-2.2/src/addins/VersionControl/MonoDevelop.VersionControl.Subversion/MonoDevelop.VersionControl.Subversion.dll.config	2010-01-26 22:26:36.313226200 -0600
+--- a/src/addins/VersionControl/MonoDevelop.VersionControl.Subversion.Unix/MonoDevelop.VersionControl.Subversion.Unix.dll.config
++++ b/src/addins/VersionControl/MonoDevelop.VersionControl.Subversion.Unix/MonoDevelop.VersionControl.Subversion.Unix.dll.config
 @@ -3,4 +3,7 @@
  	<dllmap os="osx" dll="libsvn_client-1.so.0" target="libsvn_client-1.dylib" />
  	<dllmap os="osx" dll="libapr-0.so.0" target="libapr-1.0.dylib" />
